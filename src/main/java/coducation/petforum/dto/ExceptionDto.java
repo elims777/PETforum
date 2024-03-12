@@ -1,4 +1,4 @@
-package app_db.dto;
+package coducation.petforum.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

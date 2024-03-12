@@ -1,1 +1,17 @@
+server:
+  port: 8888
 
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/forum
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: root
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+#  locations:
+#    classpath: db/migration

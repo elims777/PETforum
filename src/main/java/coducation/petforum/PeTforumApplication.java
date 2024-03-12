@@ -7,4 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PeTforumApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PeTforumApplication.class, args
+        SpringApplication.run(PeTforumApplication.class, args);
+    }
+
+}

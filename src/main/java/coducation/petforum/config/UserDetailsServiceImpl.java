@@ -1,31 +1,35 @@
-package app_db.configuration;
+package coducation.petforum.config;
 
 
 
-import app_db.model.UserEntity;
-import app_db.service.UserService;
+
+import coducation.petforum.exception.CustomException;
+import coducation.petforum.utils.MyUserEntity;
+import coducation.petforum.utils.MyUserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+
 @RequiredArgsConstructor
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    private final UserService userService;
+    private final MyUserRepository userService;
 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity user = userService.findByLogin(username);
+        MyUserEntity user = userService.findByLogin(username)
+                .orElseThrow(()->new CustomException("Пользователь не найден"));
+
 
         return User.builder()
                 .username(user.getLogin())
                 .password(user.getPassword())
-                .roles(new String[]{})
+                .roles(user.getRole())
                 .build();
 
     }

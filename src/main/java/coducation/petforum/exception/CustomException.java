@@ -1,4 +1,4 @@
-package com.example.englishwords.exception;
+package coducation.petforum.exception;
 
 public class CustomException extends RuntimeException{
     public CustomException(String message) {

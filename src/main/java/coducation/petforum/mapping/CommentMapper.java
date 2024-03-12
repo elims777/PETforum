@@ -5,7 +5,7 @@ import coducation.petforum.utils.CommentEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CommentMapping {
+public class CommentMapper {
     public CommentDto mapToDto(CommentEntity commentEntity){
         return CommentDto.builder()
                 .id(commentEntity.getId())

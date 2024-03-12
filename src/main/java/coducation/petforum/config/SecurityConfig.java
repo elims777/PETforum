@@ -1,18 +1,23 @@
-package app_db.configuration;
+package coducation.petforum.config;
+
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
+
 
 @EnableWebSecurity
 @Configuration
 @RequiredArgsConstructor
+
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsServiceImpl userDetailsService;
@@ -28,23 +33,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //cross origin request
-        //cross site reference
+
+
+
         http
-//                .sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .httpBasic().and()
                 .cors().disable()
                 .csrf().disable()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/index.html").permitAll()
-                .antMatchers("/accounts/all").permitAll()
-                .antMatchers("/users/add").permitAll()
-                .anyRequest()
-                .authenticated()
+                .antMatchers("/index.html",
+                        "/registration",
+                        "/alluserposts",
+                        "/postofdate"
+                ).permitAll()
+//                .anyRequest().authenticated()
+                .antMatchers(
+                        "/new-post",
+                        "/updatepost",
+                        "/deletepost",
+                        "/likecomment",
+                        "/addcomment",
+                        "/rewritecomment",
+                        "/deletecomment").authenticated()
+//                .hasAnyRole("USER", "ADMIN", "MODERATOR")
+//                .antMatchers("/deleteuser").hasRole("ADMIN")
                 .and()
-                .formLogin().and()
-                .logout()
-                .logoutUrl("/logout");
+                .formLogin().and().logout().permitAll();
+
     }
 }

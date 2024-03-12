@@ -8,3 +8,6 @@ class PeTforumApplicationTests {
 
     @Test
     void contextLoads() {
+    }
+
+}

@@ -5,7 +5,7 @@ import coducation.petforum.utils.MyUserEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MyUserMapping {
+public class MyUserMapper {
     public MyUserDto mapToDto(MyUserEntity myUserEntity){
         return MyUserDto.builder()
                 .id(myUserEntity.getId())
