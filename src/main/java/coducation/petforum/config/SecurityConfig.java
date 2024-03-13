@@ -22,11 +22,13 @@ import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsServiceImpl userDetailsService;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
     }
-//    @Bean
+
+    //    @Bean
 //    public static NoOpPasswordEncoder passwordEncoder() {
 //        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
 //    }
@@ -37,7 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
 
 
         http
@@ -52,17 +53,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/alluserposts",
                         "/postofdate"
                 ).permitAll()
-//                .anyRequest().authenticated()
-                .antMatchers(
-                        "/new-post",
-                        "/updatepost",
-                        "/deletepost",
-                        "/likecomment",
-                        "/addcomment",
-                        "/rewritecomment",
-                        "/deletecomment").authenticated()
-//                .hasAnyRole("USER", "ADMIN", "MODERATOR")
-//                .antMatchers("/deleteuser").hasRole("ADMIN")
+                .anyRequest().authenticated()
+//                .antMatchers(
+//                        "/new-post",
+//                        "/updatepost",
+//                        "/deletepost",
+//                        "/likecomment",
+//                        "/addcomment",
+//                        "/rewritecomment",
+//                        "/deletecomment")
+//                .access("hasAnyRole('USER', 'ADMIN', 'MODERATOR')")
+//                .antMatchers("/deleteuser").access("hasRole('ADMIN')")
                 .and()
                 .formLogin().and().logout().permitAll();
 

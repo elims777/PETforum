@@ -24,7 +24,7 @@ CREATE TABLE comment_entity (
 
 insert into my_user_entity (login, password, role) values ('user1', '$e0801$V2wciHt3y2pd0UY2qWPaoLYwyQ+P9kpxwlNvJy8RsRJEjO9DpBWNct+hochy7B24E7mmLaR1bxt+RGnw1lQIaQ==$xG+9ozP4+mfH7d7ounzmNMOWpQn22VRXaHvWFwuBuCE=', 'ADMIN');
 insert into my_user_entity (login, password, role) values ('user2', '$e0801$V2wciHt3y2pd0UY2qWPaoLYwyQ+P9kpxwlNvJy8RsRJEjO9DpBWNct+hochy7B24E7mmLaR1bxt+RGnw1lQIaQ==$xG+9ozP4+mfH7d7ounzmNMOWpQn22VRXaHvWFwuBuCE=', 'USER');
-insert into my_user_entity (login, password, role) values ('user3', '$e0801$V2wciHt3y2pd0UY2qWPaoLYwyQ+P9kpxwlNvJy8RsRJEjO9DpBWNct+hochy7B24E7mmLaR1bxt+RGnw1lQIaQ==$xG+9ozP4+mfH7d7ounzmNMOWpQn22VRXaHvWFwuBuCE=', 'moderator');
+insert into my_user_entity (login, password, role) values ('user3', '$e0801$V2wciHt3y2pd0UY2qWPaoLYwyQ+P9kpxwlNvJy8RsRJEjO9DpBWNct+hochy7B24E7mmLaR1bxt+RGnw1lQIaQ==$xG+9ozP4+mfH7d7ounzmNMOWpQn22VRXaHvWFwuBuCE=', 'MODERATOR');
 
 insert into post_entity (date, post_body, post_name, user_id) values ('2024-03-09', 'some admin text 1', 'header1a', 1);
 insert into post_entity (date, post_body, post_name, user_id) values ('2024-03-09', 'some user text 1', 'header1u', 2);
