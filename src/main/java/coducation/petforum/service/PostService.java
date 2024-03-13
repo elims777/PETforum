@@ -35,8 +35,8 @@ public class PostService {
         MyUserEntity authorEntity = postEntity.getMyUserEntity();
         MyUserEntity user = myUserRepository.findById(userId).orElseThrow();
         if(authorEntity.getLogin().equalsIgnoreCase(user.getLogin())||
-                user.getRole().equals("ROLE_ADMIN")||
-                user.getRole().equals("ROLE_MODERATOR")){
+                user.getRole().equals("ADMIN")||
+                user.getRole().equals("MODERATOR")){
             postEntity.setPostBody(newBody);
             postEntity.setDate(LocalDate.now());
             postRepository.save(postEntity);
@@ -56,8 +56,8 @@ public class PostService {
         PostEntity postEntity = postRepository.findById(postId).get();
         MyUserEntity myUserEntity = myUserRepository.findById(userId).get();
         if(postEntity.getMyUserEntity().getLogin().equalsIgnoreCase(myUserEntity.getLogin())||
-                myUserEntity.getRole().equals("ROLE_ADMIN")||
-                myUserEntity.getRole().equals("ROLE_MODERATOR")){
+                myUserEntity.getRole().equals("ADMIN")||
+                myUserEntity.getRole().equals("MODERATOR")){
             postRepository.delete(postEntity);
         }else{
             throw new CustomException("Пост не найден");

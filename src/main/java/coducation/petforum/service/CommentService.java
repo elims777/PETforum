@@ -65,8 +65,8 @@ public class CommentService {
         CommentEntity commentEntity = commentRepository.findById(commentId).get();
         MyUserEntity myUserEntity = myUserRepository.findById(userId).get();
         if(commentEntity.getMyUserEntity().getLogin().equalsIgnoreCase(myUserEntity.getLogin())||
-        myUserEntity.getRole().equals("ROLE_ADMIN")||
-                myUserEntity.getRole().equals("ROLE_MODERATOR")) {
+        myUserEntity.getRole().equals("ADMIN")||
+                myUserEntity.getRole().equals("MODERATOR")) {
             commentRepository.delete(commentEntity);
             return "Комментарий удален";
         }else{

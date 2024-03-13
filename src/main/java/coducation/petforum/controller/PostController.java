@@ -1,8 +1,11 @@
 package coducation.petforum.controller;
 
+import coducation.petforum.dto.PostDto;
+import coducation.petforum.mapping.PostMapper;
 import coducation.petforum.service.PostService;
 import coducation.petforum.service.UserService;
 import coducation.petforum.utils.MyUserEntity;
+import coducation.petforum.utils.PostEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,12 +13,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
 public class PostController {
 
     private final PostService postService;
+    private final PostMapper postMapper;
 
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
@@ -40,8 +46,8 @@ public class PostController {
     }
 
     @GetMapping("/postofdate")
-    public void postOfDate(String date){
+    public String postOfDate(String date){
         LocalDate localDate = LocalDate.parse(date, dtf);
-        postService.getPostOfDate(localDate);
+        return postService.getPostOfDate(localDate).toString();
     }
 }

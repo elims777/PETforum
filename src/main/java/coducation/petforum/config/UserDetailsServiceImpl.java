@@ -29,7 +29,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return User.builder()
                 .username(user.getLogin())
                 .password(user.getPassword())
-                .roles(user.getRole())
+                .roles(new String[]{})
                 .build();
 
     }

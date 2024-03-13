@@ -12,6 +12,6 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
-#  locations:
-#    classpath: db/migration
+      ddl-auto: none
+  locations:
+    classpath: db/migration

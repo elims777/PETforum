@@ -20,7 +20,7 @@ public class UserService {
             MyUserEntity myUserEntity = new MyUserEntity();
             myUserEntity.setLogin(login);
             myUserEntity.setPassword(password);
-            myUserEntity.setRole("ROLE_"+role.toUpperCase());
+            myUserEntity.setRole(role.toUpperCase());
             myUserRepository.save(myUserEntity);
             return "Пользователь успешно зарегистрирован";
         } else {
@@ -31,7 +31,7 @@ public class UserService {
     public String deleteUser(int userId, String userLogin) {
         MyUserEntity myUserEntity = myUserRepository.findByLogin(userLogin).orElseThrow();
         MyUserEntity deletingUser = myUserRepository.findById(userId).orElseThrow();
-        if(myUserEntity.getRole().equals("ROLE_ADMIN")){
+        if(myUserEntity.getRole().equals("ADMIN")){
             myUserRepository.delete(deletingUser);
             return "Пользователь удален";
         } else {

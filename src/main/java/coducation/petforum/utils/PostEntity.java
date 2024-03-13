@@ -7,7 +7,6 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -29,11 +28,10 @@ public class PostEntity {
     @Override
     public String toString() {
         return "PostEntity{" +
-                "id=" + id +
                 ", postName='" + postName + '\'' +
                 ", postBody='" + postBody + '\'' +
                 ", myUserEntity=" + myUserEntity.getLogin() +
-                ", date=" + date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy mm:hh")) +
+                ", date=" + date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) +
                 '}';
     }
 }
